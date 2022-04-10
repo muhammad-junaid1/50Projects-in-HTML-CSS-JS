@@ -1,18 +1,98 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --primary-color: rgb(196, 196, 196);
+  --secondary-color: #2d72fe;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: #f6f7fb;
 }
 
+.steps-container {
+  width: 300px;
+}
+
+.steps-container .steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.steps .step {
+  border-radius: 50%;
+  padding: 8px;
+  background: white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--primary-color);
+}
+
+.steps .steps-bar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 3px;
+  width: 100%;
+  background: var(--primary-color);
+  z-index: -1;
+}
+
+.steps .steps-bar_highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: var(--secondary-color);
+  transition: width 0.4s ease-in;
+}
+
+.steps-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.steps-controls button {
+  margin: 0 5px;
+  background: var(--secondary-color);
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  padding: 7px 22px;
+  color: white;
+  font-family: inherit;
+  min-width: 60px;
+  cursor: pointer;
+}
+
+.steps-controls button:active {
+  transform: scale(0.98);
+}
+
+.steps-controls button:disabled {
+  background: #ddd;
+  color: white;
+}
+
+.step.active {
+  border: 2px solid var(--secondary-color);
+}
