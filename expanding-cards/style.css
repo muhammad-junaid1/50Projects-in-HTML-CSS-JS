@@ -1,18 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
+.panels-container {
+  width: 90vw;
+  display: flex;
+}
+
+.panels-container .panel:nth-child(1) {
+  background-image: url("https://images.unsplash.com/photo-1548263594-a71ea65a8598?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80");
+}
+.panels-container .panel:nth-child(2) {
+  background-image: url("https://images.unsplash.com/photo-1649530492582-f519a3d86cf8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80");
+}
+.panels-container .panel:nth-child(3) {
+  background-image: url("https://images.unsplash.com/photo-1548602088-9d12a4f9c10f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80");
+}
+.panels-container .panel:nth-child(4) {
+  background-image: url("https://images.unsplash.com/photo-1515674744565-0d7112cd179a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80");
+}
+.panels-container .panel:nth-child(5) {
+  background-image: url("https://images.unsplash.com/photo-1648737966661-22e0c69d5aa5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80");
+}
+
+.panels-container .panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 90vh;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 3px;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  user-select: none;
+}
+
+.panel h3 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.active {
+  flex: 5 !important;
+  filter: grayscale(0);
+}
+
+.active h3 {
+  opacity: 1;
+}
+
+.panel:not(.active) {
+  filter: grayscale(1);
+}
