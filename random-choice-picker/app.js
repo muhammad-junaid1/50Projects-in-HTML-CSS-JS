@@ -7,7 +7,6 @@ textArea.addEventListener("keyup", (e) => {
   renderTags(choices.filter((ch) => ch.trim() !== "").map((ch) => ch.trim()));
   if (e.code === "Enter") {
     e.preventDefault();
-    e.target.value = "";
     selectRandom();
   }
 });
@@ -21,41 +20,48 @@ function renderTags(choices) {
   });
 }
 
-function resetChoicesBg() {
-  allChoices.forEach((ch) => (ch.style.background = ""));
-}
-
 // Select random choice with animation
 function selectRandom() {
-  // Code here
-  const choicesElems = document.querySelectorAll(".choices-list .choice");
+  const times = 30;
 
-  // Function for wave animation
-  function setWaveAnim() {
-    choicesElems.forEach((ch) => {
-      ch.classList.remove("wave");
-      ch.style.animationDelay = "";
-    });
+  // Choices animation
+  const interval = setInterval(() => {
+    const randChoice = pickRandChoice();
+    highlightChoice(randChoice);
     setTimeout(() => {
-      choicesElems.forEach((ch, i) => {
-        ch.classList.add("wave");
-        ch.style.animationDelay = `${i * 0.1}s`;
-      });
+      unHighlightChoice(randChoice);
     }, 100);
-  }
-  setWaveAnim();
-  const interval = setInterval(setWaveAnim, 800);
+  }, 200);
+
+  // Highlight the rand choice after blinking animation
   setTimeout(() => {
     clearInterval(interval);
 
     setTimeout(() => {
-      // Get random choice elem
-      const randChoice =
-        Array.from(choicesElems)[
-          Math.floor(Math.random() * choicesElems.length)
-        ];
-
-      randChoice.style.backgroundColor = "rgb(255, 0 ,255)";
+      // Change bg of all choices other than random picked choice
+      const choicesElems = document.querySelectorAll(".choices-list .choice");
+      choicesElems.forEach((ch) => {
+        ch.style.backgroundColor = "#ccc";
+        ch.style.color = "black";
+      });
+      const randChoice = pickRandChoice();
+      randChoice.style.color = "white";
+      highlightChoice(randChoice);
     }, 100);
-  }, 3000);
+  }, times * 100);
+}
+
+// Highlight/Unhighlight choice
+function highlightChoice(choice) {
+  choice.style.backgroundColor = "rgb(255, 0 ,255)";
+}
+function unHighlightChoice(choice) {
+  choice.style.backgroundColor = "";
+}
+
+function pickRandChoice() {
+  const choicesElems = document.querySelectorAll(".choices-list .choice");
+  const randChoice =
+    choicesElems[Math.floor(Math.random() * choicesElems.length)];
+  return randChoice;
 }
