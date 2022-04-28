@@ -1,17 +1,127 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
+body > p {
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.water-container {
+  width: 280px;
+  height: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+}
+
+.water-container .empty-area,
+.water-container .filled-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: flex 1s ease;
+}
+
+.empty-area {
+  background: #eee;
+  color: black;
+  border-radius: 10px 10px 0 0;
+  flex: 100%;
+  border: 3px solid rgb(224, 224, 224);
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.empty-area p {
+  margin: 8px;
+}
+
+.empty-area span {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.filled-area {
+  background: rgb(9, 156, 224);
+  border-radius: 0 0 60px 60px;
+  color: rgb(164, 255, 245);
+  flex: 0%;
+  font-size: 30px;
+  border: 3px solid rgb(90 188 255);
+  border-top: 0;
+  border-bottom: 0;
+  font-weight: bolder;
+}
+
+.filled-area p {
+  transition: transform 0.4s ease;
+}
+
+.glasses {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 10px;
+  width: 440px;
+}
+
+.glass {
+  border: 3px solid rgb(9, 156, 224);
+  padding: 5px;
+  text-align: center;
+  word-wrap: break-word;
+  width: 90px;
+  height: 120px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  border-radius: 2px 2px 20px 20px;
+  padding-top: 20px;
+}
+
+.glass.drunk {
+  background: rgb(90 188 255);
+  color: white;
+}
+
+.popout {
+  animation: finished 0.8s ease;
+}
+
+@keyframes finished {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  70% {
+    transform: scale(1.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
