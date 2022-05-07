@@ -16,8 +16,8 @@ function hands() {
   const minutes = now.getMinutes();
   const hours = now.getHours() % 12;
 
-  const scaledSeconds = scale(seconds, 0, 60, 0, 360);
-  const scaledMinutes = scale(minutes, 0, 60, 0, 360);
+  const scaledSeconds = scale(seconds + (minutes * 60) , 0, 60, 0, 360);
+  const scaledMinutes = scale(minutes + (hours * 60), 0, 60, 0, 360);
   const scaledHours = scale(hours, 0, 12, 0, 360);
 
   secondsHand.style.transform = `rotate(${scaledSeconds}deg) translate(-50%, -100%)`;
