@@ -1,18 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
+.clock {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  position: relative;
+  border: 10px solid #eee;
+}
+
+.clock .number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  transform-origin: bottom center;
+  height: 50%;
+  z-index: -50;
+  text-align: center;
+  padding: 15px;
+}
+
+.clock .number span {
+  display: block;
+  font-weight: 500;
+}
+
+.clock .center,
+.clock .hour-hand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.clock .hour-hand,
+.clock .minutes-hand,
+.clock .seconds-hand {
+  z-index: -5;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: top left;
+  transition: transform 0.2s ease-in-out;
+}
+
+.clock .center {
+  width: 25px;
+  height: 25px;
+  background: rgb(61, 61, 61);
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.clock .hour-hand {
+  width: 15px;
+  height: 28%;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(0deg) translate(-50%, -100%);
+  background: rgb(186 206 255);
+}
+.clock .minutes-hand {
+  width: 8px;
+  height: 40%;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(0deg) translate(-50%, -100%);
+  background: rgb(101 255 101);
+}
+.clock .seconds-hand {
+  width: 3px;
+  height: 45%;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(0) translate(-50%, -100%);
+  background: rgb(255, 62, 62);
+}
+
+.time {
+  margin-top: 50px;
+  font-size: 30px;
+  text-align: center;
+  font-family: consolas;
+}
